@@ -2,7 +2,7 @@
 
 # Как установить
 
-1. git clone https://github.com/SilverDragoon/LoftSchool_Shop.git fileupload
+1. git clone https://github.com/SilverDragoon/backbone-learn.git Backbone-Learn
 2. cd !$
 3. bower i
 4. npm i
