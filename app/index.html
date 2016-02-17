@@ -12,7 +12,12 @@
 	</head>
 	<body>
 		<h1>Список задач</h1>
-		<div class="tasks"></div>
+		<div class="tasks">
+			<script type="text/template" id="taskTemplate"><span><%= title %></span>
+				<button class="edit">Edit</button>
+				<button class="delete">Delete</button>
+			</script>
+		</div>
 		<script src="bower/underscore/underscore.js"></script>
 		<script src="bower/jquery/dist/jquery.js"></script>
 		<script src="bower/backbone/backbone.js"></script>

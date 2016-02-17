@@ -11,12 +11,30 @@ $(function() {
 		return _.template( $('#' + id).html() );
 	};
 
-	App.Models.Task = Backbone.Model.extend({});
+	App.Models.Task = Backbone.Model.extend({
+		validate: function (attrs, options) {
+			if ( ! $.trim(attrs.title) ) {
+				return 'Имя задачи должно быть валидным!';
+			}
+		}
+	});
 	App.Views.Task = Backbone.View.extend({
+		initialize: function () {
+			this.model.on('change', this.render, this)
+		},
 		tagName: 'li',
+		template: template('taskTemplate'),
 		render: function () {
-			this.$el.html( this.model.get('title') );
+			var template = this.template(this.model.toJSON());
+			this.$el.html( template );
 			return this;
+		},
+		events: {
+			'click .edit': 'editTask'
+		},
+		editTask: function () {
+			var newTaskTitle = prompt('Новая задача', this.model.get('title'));
+			this.model.set({title: newTaskTitle}, {validate : true});
 		}
 	});
 
@@ -57,6 +75,5 @@ $(function() {
 
 	var tasksView = new App.Views.Tasks({ collection: tasksCollection });
 
-	tasksView.render();
-	$('body').html(tasksView.el);
+	$('.tasks').html(tasksView.render().el);
 })

@@ -13,6 +13,10 @@ html(lang="ru-Ru")
 	body
 		h1 Список задач
 		.tasks
+			script(type="text/template" id="taskTemplate")
+				span <%= title %>
+				button.edit Edit
+				button.delete Delete
 		script(src="bower/underscore/underscore.js")
 		script(src="bower/jquery/dist/jquery.js")
 		script(src="bower/backbone/backbone.js")
