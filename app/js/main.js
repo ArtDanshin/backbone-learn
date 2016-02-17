@@ -63,6 +63,27 @@ $(function() {
 		}
 	});
 
+	App.Views.AddTask = Backbone.View.extend({
+		el: '#addTask',
+
+		initialize: function () {
+			
+		},
+		events: {
+			'submit': 'submitTask'
+		},
+		submitTask: function (e) {
+			e.preventDefault();
+			
+			var newTaskTitle = $(e.currentTarget).find('input[type=text]').val();
+
+			var newTask = new App.Models.Task({ title: newTaskTitle });
+
+			// console.log(newTask); <- Тут остановился
+		}
+	});
+	
+
 	var tasksCollection = new App.Collections.Task([
 		{
 			title: 'Сходить в магазин',
@@ -81,4 +102,6 @@ $(function() {
 	var tasksView = new App.Views.Tasks({ collection: tasksCollection });
 
 	$('.tasks').html(tasksView.render().el);
+
+	var addTaskView = new App.Views.AddTask();
 })

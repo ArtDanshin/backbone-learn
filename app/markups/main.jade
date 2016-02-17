@@ -12,6 +12,10 @@ html(lang="ru-Ru")
 		script(src="bower/modernizr/modernizr.js")
 	body
 		h1 Список задач
+
+		form(action="" id="addTask")
+			input(type="text" placeholder="Ваша новая задача")
+			input(type="submit" value="Добавить задачу")
 		.tasks
 			script(type="text/template" id="taskTemplate")
 				span <%= title %>
