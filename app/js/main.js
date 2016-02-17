@@ -21,7 +21,7 @@ $(function() {
 	});
 
 	App.Collections.Task = Backbone.Collection.extend({
-		model: App.Models.task
+		model: App.Models.Task
 	});
 
 	App.Views.Tasks = Backbone.View.extend({
@@ -57,6 +57,6 @@ $(function() {
 
 	var tasksView = new App.Views.Tasks({ collection: tasksCollection });
 
-	taskView.render();
-	$('body').html(taskView.el);
+	tasksView.render();
+	$('body').html(tasksView.el);
 })
